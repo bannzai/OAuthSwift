@@ -53,11 +53,7 @@ open class OAuthWebViewController: OAuthViewController, OAuthSwiftURLHandlerType
     public var dismissViewControllerAnimated = true
 
     public var topViewController: UIViewController? {
-        #if !OAUTH_APP_EXTENSIONS
-            return UIApplication.topViewController
-        #else
-            return nil
-        #endif
+        return UIApplication.topViewController
     }
     #elseif os(OSX)
     /// How to present this view controller if parent view controller set
