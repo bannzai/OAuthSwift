@@ -11,11 +11,7 @@
 
     extension UIApplication {
         @nonobjc static var topViewController: UIViewController? {
-            #if !OAUTH_APP_EXTENSIONS
-                return UIApplication.shared.topViewController
-            #else
-                return nil
-            #endif
+            return UIApplication.shared.topViewController
         }
 
         var topViewController: UIViewController? {

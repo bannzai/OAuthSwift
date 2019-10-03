@@ -8,9 +8,7 @@
 
 import Foundation
 #if os(iOS)
-#if !OAUTH_APP_EXTENSIONS
 import UIKit
-#endif
 #endif
 
 let kHTTPHeaderContentType = "Content-Type"
@@ -103,9 +101,7 @@ open class OAuthSwiftHTTPRequest: NSObject, OAuthSwiftRequestHandle {
             self.session.finishTasksAndInvalidate()
 
             #if os(iOS)
-                #if !OAUTH_APP_EXTENSIONS
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = self.config.sessionFactory.isNetworkActivityIndicatorVisible
-                #endif
+            UIApplication.shared.isNetworkActivityIndicatorVisible = self.config.sessionFactory.isNetworkActivityIndicatorVisible
             #endif
         }
     }
@@ -113,9 +109,7 @@ open class OAuthSwiftHTTPRequest: NSObject, OAuthSwiftRequestHandle {
     /// Function called when receiving data from server.
     public static func completionHandler(completionHandler completion: CompletionHandler?, request: URLRequest, data: Data?, resp: URLResponse?, error: Error?) {
         #if os(iOS)
-        #if !OAUTH_APP_EXTENSIONS
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
-        #endif
         #endif
 
         // MARK: failure error returned by server
